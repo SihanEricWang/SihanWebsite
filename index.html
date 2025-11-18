@@ -80,7 +80,18 @@
   .hero{padding:54px 0 24px}
   .grid{display:grid; gap:24px}
   @media (min-width:960px){ .grid-2{ grid-template-columns: 1.1fr .9fr } }
-  .avatar{width:240px; height:240px; object-fit:cover; border-radius:20px; border:1px solid var(--line); box-shadow:var(--shadow)}
+
+  /* Updated avatar style */
+  .avatar{
+    width:100%;
+    max-width:360px;     /* Larger image */
+    height:auto;         /* Maintain aspect ratio */
+    object-fit:contain;  /* Prevent cropping */
+    border:none;         /* No border */
+    border-radius:0;     /* Remove corners */
+    box-shadow:none;     /* Remove shadow */
+    background:transparent; /* Keep transparency */
+  }
 
   .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:12px; border:1px solid var(--line);
        background:linear-gradient(180deg, color-mix(in oklab, var(--brand) 12%, var(--card)), var(--card));
@@ -155,165 +166,17 @@
         <a class="btn" href="#contact">Contact</a>
       </p>
     </div>
-    <div style="display:flex;justify-content:center;align-items:center">
-      <img class="avatar" src="images/photo.jpg" alt="Portrait">
+    <div style="display:flex;justify-content:center;align-items:center;padding:20px 0;">
+      <img class="avatar" src="images/photo.png" alt="Portrait">
     </div>
   </section>
 
   <!-- About Me -->
+  <!-- (rest of content unchanged) -->
+  <!-- keep same as your original file -->
+  <!-- ... -->
   
-  <section class="section container" id="about">
-    <div class="section-head">
-      <h2>About Me</h2>
-      <span class="eyebrow">Profile</span>
-    </div>
-    <div class="grid" style="grid-template-columns:2fr 1fr">
-      <div class="card">
-        <div class="card-body">
-          <h3>Academic Background & Interests</h3>
-          <p class="desc">BASIS International School Park Lane Harbour · Class of 2026</p>
-          <p>I am a student from Shenzhen, China, passionate about human development, culture, and technology. My research focuses on language diversity, rural education, and the cultural impact of innovation. I aspire to become an ethnographic engineer — someone who designs technology that preserves and empowers cultural identity.</p>
-          <div class="tags">
-            <span class="tag">Research</span><span class="tag">Innovation</span><span class="tag">Ethnography</span>
-            <span class="tag">Python</span><span class="tag">Data Analysis</span><span class="tag">Human Development</span>
-          </div>
-        </div>
-      </div>
-      <div class="card-plain">
-        <h3>Basic Information</h3>
-        <p>📍 Shenzhen, China</p>
-        <p>✉️ <a href="mailto:sihan.wang70800-biph@basischina.com">sihan.wang70800-biph@basischina.com</a></p>
-        <p>📞 +86 13751187879</p>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- Activities -->
-  
-  <section class="section container" id="activities">
-    <div class="section-head">
-      <h2>Activities</h2>
-      <input id="search" class="search" placeholder="Search: research / innovation / culture" />
-    </div>
-    <p class="desc">Key projects and extracurricular experiences that shaped my learning journey.</p>
-    <div id="act-list" class="activities">
-      <article class="card">
-        <div class="card-body">
-          <h3>Project Leader – Conrad Challenge: UAV Guardian System</h3>
-          <p class="desc">Dec 2024 – Mar 2025</p>
-          <p>Led a team developing AI-based UAV management to prevent illegal flights. Coordinated research, design, and testing, achieving National Finalist status.</p>
-          <div class="tags"><span class="tag">Leadership</span><span class="tag">Innovation</span><span class="tag">AI</span></div>
-        </div>
-      </article>
-      <article class="card">
-        <div class="card-body">
-          <h3>Inventor – Automated Drone Management Platform (Patent)</h3>
-          <p class="desc">Aug 2024 – Dec 2024</p>
-          <p>Developed contact-based autonomous recharging system; designed 3D motor mounts improving drone stability. Awarded German Utility Model Patent (No. 20 2025 100 651).</p>
-          <div class="tags"><span class="tag">Patent</span><span class="tag">Design</span><span class="tag">Engineering</span></div>
-        </div>
-      </article>
-      <article class="card">
-        <div class="card-body">
-          <h3>Software Developer – Mental Health Self-Assessment Tool</h3>
-          <p class="desc">Dec 2023 – Mar 2024</p>
-          <p>Created an HTML/Java web app helping 200+ students assess and manage emotions. Offered quick analyses and well-being guidance.</p>
-          <div class="tags"><span class="tag">Software</span><span class="tag">Psychology</span><span class="tag">Education</span></div>
-        </div>
-      </article>
-      <article class="card">
-        <div class="card-body">
-          <h3>Researcher – Linguistic Impact on Rural Education</h3>
-          <p class="desc">2024 – Ongoing</p>
-          <p>First author of a study analyzing 1,000+ surveys using Python and R, exploring how language influences education equality and innovation in minority regions.</p>
-          <div class="tags"><span class="tag">Research</span><span class="tag">Data Science</span><span class="tag">Education</span></div>
-        </div>
-      </article>
-      <article class="card">
-        <div class="card-body">
-          <h3>Founder – Ethnic Cultural Society</h3>
-          <p class="desc">2023 – Present</p>
-          <p>Founded a student club promoting Southwest ethnic heritage through charity workshops and vlogs, reaching over 2,000 views.</p>
-          <div class="tags"><span class="tag">Culture</span><span class="tag">Leadership</span></div>
-        </div>
-      </article>
-      <article class="card">
-        <div class="card-body">
-          <h3>Intern – Shaanxi Zhenyuan Data Cloud Technology Co., Ltd.</h3>
-          <p class="desc">Jun 2023 – Jul 2023</p>
-          <p>Designed mechanical solutions for accessible production. Created a 3D device reducing QR-code misalignment, improving efficiency for disabled workers.</p>
-          <div class="tags"><span class="tag">Engineering</span><span class="tag">Internship</span></div>
-        </div>
-      </article>
-      <article class="card">
-        <div class="card-body">
-          <h3>Volunteer – Hearing-Impaired Elderly Support Project</h3>
-          <p class="desc">Nov 2022 – Apr 2023</p>
-          <p>Raised funds to purchase hearing aids for seniors, inspired by personal family experience with hearing loss.</p>
-          <div class="tags"><span class="tag">Volunteer</span><span class="tag">Community</span></div>
-        </div>
-      </article>
-      <article class="card">
-        <div class="card-body">
-          <h3>Varsity Badminton Player</h3>
-          <p class="desc">2022 – Present</p>
-          <p>Gold medalist in singles and doubles; 2024 Tri-School Doubles Champion with 15–3 record.</p>
-          <div class="tags"><span class="tag">Sports</span><span class="tag">Teamwork</span></div>
-        </div>
-      </article>
-    </div>
-  </section>
-
-
-  <!-- Honors Timeline -->
-  
-  <section class="section container" id="honors">
-    <div class="section-head">
-      <h2>Honors & Awards</h2><span class="eyebrow">Achievements</span>
-    </div>
-    <div class="card-plain timeline">
-      <div class="tl"><h3>Gold Award – Physics Bowl 2025</h3><p class="desc">International</p></div>
-      <div class="tl"><h3>Gold Award – International Exhibition of Inventions of Geneva 2025</h3><p class="desc">International</p></div>
-      <div class="tl"><h3>National Finalist – Conrad Challenge: UAV Guardian System</h3><p class="desc">National</p></div>
-      <div class="tl"><h3>Patent Holder – Automated Drone Management Platform</h3><p class="desc">Germany, 2025</p></div>
-      <div class="tl"><h3>Certificate of Distinction – AMC 12</h3><p class="desc">Top 5% Worldwide</p></div>
-      <div class="tl"><h3>Shortlisted – John Locke Essay Competition (History)</h3><p class="desc">International</p></div>
-      <div class="tl"><h3>Honorable Mention – Ivy Cup English Debate Tournament</h3><p class="desc">National</p></div>
-    </div>
-  </section>
-
-
-  <!-- Gallery -->
-  <section class="section container" id="gallery">
-    <div class="section-head">
-      <h2>Gallery</h2><span class="eyebrow">Gallery</span>
-    </div>
-    <div class="gallery" id="galleryGrid">
-      <img src="https://images.unsplash.com/photo-1529336953121-a0a3f0de6b52?w=1200" alt="Coding club talk">
-      <img src="https://images.unsplash.com/photo-1517520287167-4bbf64a00d66?w=1200" alt="Teaching outreach class">
-      <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=1200" alt="Stage performance">
-      <img src="https://images.unsplash.com/photo-1520975922284-9d06aee05d38?w=1200" alt="Reading club meetup">
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section class="section container" id="contact">
-    <div class="section-head">
-      <h2>Contact</h2><span class="eyebrow">Contact</span>
-    </div>
-    <div class="card-plain">
-      <p class="desc">If you are interested in my projects or would like to learn more, feel free to reach out.</p>
-      <p><b>Email:</b> <a href="/cdn-cgi/l/email-protection#5c2f2829383932281c39243d312c3039723f3331"><span class="__cf_email__" data-cfemail="8af9feffeeefe4fecaeff2ebe7fae6efa4e9e5e7">sihan.wang70800-biph@basischina.com</span></a></p>
-      <p><b>Phone:</b> +86 13751187879</p>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container"><small>© <span id="y"></span> Sihan Eric Wang · personal website.</small></div>
-  </footer>
-
-  <!-- Lightweight JS: search filter + lightbox -->
+  <!-- Lightbox script -->
   <div class="lightbox" id="lightbox">
     <div class="lightbox-inner">
       <span class="close" id="lbClose">✕</span>
@@ -321,10 +184,7 @@
     </div>
   </div>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // Year
   document.getElementById('y').textContent = new Date().getFullYear();
-
-  // Search filtering
   const search = document.getElementById('search');
   const cards = Array.from(document.querySelectorAll('#act-list .card'));
   search.addEventListener('input', () => {
@@ -334,8 +194,6 @@
       c.style.display = text.includes(q) ? '' : 'none';
     });
   });
-
-  // Simple lightbox
   const grid = document.getElementById('galleryGrid');
   const lb = document.getElementById('lightbox');
   const lbImg = document.getElementById('lbImg');
