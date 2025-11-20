@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Sihan Eric Wang · Personal Portfolio</title>
-<meta name="description" content="Activities · Honors · Gallery" />
+<meta name="description" content="Activities · Honors" />
 <meta name="color-scheme" content="dark light" />
 <style>
   /* =====================
@@ -47,7 +47,7 @@
       linear-gradient(180deg, var(--bg), var(--bg-2));
   }
 
-  /* Unified typography scale */
+  /* Typography */
   h1{font-size:32px; line-height:1.25; margin:8px 0 10px; letter-spacing:.2px;}
   h2{font-size:24px; line-height:1.35; margin:0 0 12px;}
   h3{font-size:18px; line-height:1.35; margin:0 0 8px;}
@@ -139,12 +139,6 @@
   }
   .activities .card.is-active::after, .honors .card.is-active::after{border-color:color-mix(in srgb, var(--brand-2) 70%, transparent);}
 
-  /* Timeline (kept for potential reuse) */
-  .timeline{position:relative; padding-left:22px}
-  .timeline::before{content:""; position:absolute; left:9px; top:0; bottom:0; width:2px; background:linear-gradient(var(--line), transparent)}
-  .tl{position:relative; padding-left:18px; margin:18px 0}
-  .tl::before{content:""; position:absolute; left:-2px; top:.45rem; width:10px; height:10px; border-radius:50%; background:linear-gradient(135deg, var(--brand), var(--brand-2)); box-shadow:0 0 0 3px color-mix(in srgb, var(--brand) 30%, transparent)}
-
   /* Footer */
   footer{border-top:1px solid var(--line); padding:24px 0}
 
@@ -196,23 +190,38 @@
   .lightbox-inner img{width:100%; border-radius:14px}
   .close{position:absolute; top:14px; right:18px; color:#fff; font-size:22px; cursor:pointer}
 
-  /* ---------- Honors as compact cards + modal ---------- */
-  .honors{display:grid; grid-template-columns: 1fr; gap:18px;}
-  @media (min-width:700px){ .honors{grid-template-columns: repeat(2, minmax(0, 1fr));} }
-  @media (min-width:1100px){ .honors{grid-template-columns: repeat(3, minmax(0, 1fr));} }
-
-  .honors .card-body{padding:12px 14px} /* 更紧凑 */
-  .honors .card-body h3{
-    margin:0; padding-left:18px; position:relative; line-height:1.3;
+  /* ---------- Honors: 单列长条、紧凑 + 彩色圆点 + 右侧箭头 ---------- */
+  .honors{
+    display:grid; grid-template-columns: 1fr; gap:14px;   /* 单列 */
   }
-  .honors .card-body .honor-meta{margin:6px 0 0}
+  .honors .card:hover{ transform:translateY(-2px) scale(1.005); } /* 长条上浮更稳 */
+  .honors .card-body{
+    display:flex; align-items:center; gap:12px;
+    padding:12px 16px;        /* 紧凑 */
+  }
+  .honors .card-body h3{
+    margin:0; padding-left:18px; position:relative; line-height:1.3; flex:1 1 auto;
+  }
+  .honors .card-body .honor-meta{
+    margin:0; white-space:nowrap; color:var(--muted);
+  }
   .honors .card-body > *:last-child{margin-bottom:0}
-
-  /* 标题前的彩色小圆点（品牌渐变） */
   .honors .card-body h3::before{
     content:""; position:absolute; left:0; top:.55em; width:10px; height:10px; border-radius:50%;
     background: conic-gradient(from 180deg at 50% 50%, var(--brand), var(--brand-2), var(--brand));
     box-shadow:0 0 0 3px color-mix(in srgb, var(--brand) 18%, transparent);
+  }
+  /* 右侧「›」箭头（装饰） */
+  .honors .card-body::after{
+    content:"›";
+    font-size:18px; line-height:1;
+    margin-left:auto;           /* 把箭头推到最右侧 */
+    opacity:.6;
+    transition:transform var(--dur) var(--ease), opacity var(--dur) var(--ease);
+  }
+  .honors .card:hover .card-body::after{
+    transform:translateX(2px);  /* 悬停轻微右移 */
+    opacity:1;
   }
 
   /* Honor modal */
@@ -264,7 +273,6 @@
       </p>
     </div>
     <div class="hero-media">
-      <!-- Use a transparent PNG for best results -->
       <img class="avatar" src="images/photo.png" alt="Portrait of Sihan Eric Wang" loading="eager" decoding="async" fetchpriority="high">
     </div>
   </section>
@@ -349,7 +357,7 @@
                data-images="https://images.unsplash.com/photo-1515165562835-c4c9e0737eaa?w=1200,https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=1200,https://images.unsplash.com/photo-1453748866136-b1dd97284f49?w=1200">
         <div class="card-body">
           <h3>Founder – Ethnic Cultural Society</h3>
-        <p class="desc">2023 – Present</p>
+          <p class="desc">2023 – Present</p>
           <p>Founded a student club promoting Southwest ethnic heritage through charity workshops and vlogs, reaching over 2,000 views.</p>
           <div class="tags"><span class="tag">Culture</span><span class="tag">Leadership</span></div>
         </div>
@@ -542,7 +550,7 @@
     // Build gallery thumbnails from data-images
     activityModalThumbs.innerHTML = '';
     const raw = card.dataset.images || '';
-    const urls = raw.split(',').map(s => s.trim()).filter(Boolean);
+       const urls = raw.split(',').map(s => s.trim()).filter(Boolean);
     urls.forEach(url => activityModalThumbs.appendChild(buildThumb(url, title)));
 
     activityModal.classList.add('open');
@@ -595,13 +603,6 @@
   });
   lbClose.addEventListener('click', () => lb.classList.remove('open'));
   lb.addEventListener('click', (e) => { if(e.target === lb) lb.classList.remove('open'); });
-  document.addEventListener('keydown', (e)=> {
-    if(e.key === 'Escape'){
-      lb.classList.remove('open');
-      if (activityModal.classList.contains('open')) closeActivityModal();
-      if (honorModalBackdrop.classList.contains('open')) closeHonorModal();
-    }
-  });
 
   // ------------------ Honors modal (certificates) ------------------
   const honorModalBackdrop = qs('#honorModal');
@@ -667,7 +668,15 @@
     }
   });
   honorModalClose.addEventListener('click', closeHonorModal);
-  honorModalBackdrop.addEventListener('click', (e) => { if(e.target === honorModalBackdrop) closeHonorModal(); });
+
+  // Global keyboard: put AFTER all refs exist
+  document.addEventListener('keydown', (e)=> {
+    if(e.key === 'Escape'){
+      lb.classList.remove('open');
+      if (activityModal.classList.contains('open')) closeActivityModal();
+      if (honorModalBackdrop.classList.contains('open')) closeHonorModal();
+    }
+  });
 </script>
 </body>
 </html>
