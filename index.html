@@ -143,6 +143,29 @@
 
   /* Footer */
   footer{border-top:1px solid var(--line); padding:24px 0}
+
+  /* End note / closing section */
+  .end-note{
+    text-align:center;
+    padding:28px 20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+  }
+  .end-pill{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:6px 14px;
+    border-radius:999px;
+    border:1px solid var(--line);
+    background:color-mix(in oklab, var(--card) 80%, transparent);
+    font-size:12px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
 </style>
 </head>
 <body>
@@ -155,7 +178,8 @@
         <li><a class="chip" href="#activities">Activities</a></li>
         <li><a class="chip" href="#honors">Honors</a></li>
         <li><a class="chip" href="#gallery">Gallery</a></li>
-        <li><a class="chip" href="#contact">Contact</a></li>
+        <!-- Contact now scrolls to Basic Information under About Me -->
+        <li><a class="chip" href="#basic-info">Contact</a></li>
       </ul>
     </div>
   </nav>
@@ -169,7 +193,7 @@
       <p>I am endlessly curious about technology, art, and public service practice, and I love growing through real-world projects. This page curates my activities, competition honors, and photographic highlights.</p>
       <p style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
         <a class="btn primary" href="#activities">See my activities →</a>
-        <a class="btn" href="#contact">Contact</a>
+        <a class="btn" href="#basic-info">Contact</a>
       </p>
     </div>
     <div class="hero-media">
@@ -196,7 +220,7 @@
           </div>
         </div>
       </div>
-      <div class="card-plain">
+      <div class="card-plain" id="basic-info">
         <h3>Basic Information</h3>
         <p>📍 Shenzhen, China</p>
         <p>✉️ <a href="mailto:sihan.wang70800-biph@basischina.com">sihan.wang70800-biph@basischina.com</a></p>
@@ -309,15 +333,16 @@
     </div>
   </section>
 
-  <!-- Contact -->
-  <section class="section container" id="contact">
-    <div class="section-head">
-      <h2>Contact</h2><span class="eyebrow">Contact</span>
-    </div>
-    <div class="card-plain">
-      <p class="desc">If you are interested in my projects or would like to learn more, feel free to reach out.</p>
-      <p><b>Email:</b> <a href="/cdn-cgi/l/email-protection#5c2f2829383932281c39243d312c3039723f3331"><span class="__cf_email__" data-cfemail="8af9feffeeefe4fecaeff2ebe7fae6efa4e9e5e7">sihan.wang70800-biph@basischina.com</span></a></p>
-      <p><b>Phone:</b> +86 13751187879</p>
+  <!-- End Note (replaces Contact section) -->
+  <section class="section container" id="end">
+    <div class="card-plain end-note">
+      <div class="end-pill">End of page</div>
+      <h2>Thank you for exploring my journey</h2>
+      <p class="desc">
+        I appreciate your time and patience in viewing my portfolio.  
+        If any of my projects or experiences resonate with you, I’d be glad to continue the conversation—  
+        you can always reach me through the contact details in the “Basic Information” section above.
+      </p>
     </div>
   </section>
 
